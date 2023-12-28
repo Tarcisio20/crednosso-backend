@@ -1,0 +1,106 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "mysql"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  id Int @id @default(autoincrement())
+  name_full String
+  email String
+  last_access_date DateTime
+  status Boolean @default(true)
+  Log Log[]
+}
+
+model Log {
+  id Int @id @default(autoincrement())
+  id_responsable_user Int
+  log_date DateTime
+  action String
+  status Boolean @default(true)
+  user User? @relation(fields: [id_responsable_user], references: [id])
+}
+
+
+
+model Atm {
+  id Int @id @default(autoincrement())
+  id_system Int
+  name_full String
+  shortened_name String
+  id_treasury Int
+  status Boolean @default(true)
+  treasury Treasury? @relation(fields: [id_treasury], references: [id])
+}
+
+model Treasury {
+  id Int @id @default(autoincrement())
+  id_systen Int
+  name_full String
+  shortened_name String
+  config_cass_A Int
+  config_cass_B Int
+  config_cass_C Int
+  config_cass_D Int
+  balance_cass_A Float
+  balance_cass_B Float
+  balance_cass_C Float
+  balance_cass_D Float
+  status Boolean @default(true)
+  Atm Atm[]
+  OrderOrigin Order[]
+  OrderDestiny Order[]
+}
+
+
+
+model OperationType {
+  id Int @id @default(autoincrement())
+  name_full String
+  status Boolean @default(true)
+}
+
+model OrderType {
+  id Int @id @default(autoincrement())
+  name_full String
+  status Boolean @default(true)
+  Order Order[]
+}
+
+model Order {
+  id Int @id @default(autoincrement())
+  order_date DateTime
+  batch Int
+  id_origin_treasury Int
+  id_destiny_treasury Int
+  id_operation_type Int
+  id_order_type Int
+  batch_treasury Int
+  value_of_10 Float @default(0)
+  value_of_20 Float @default(0)
+  value_of_50 Float @default(0)
+  value_of_100 Float @default(0)
+  observation String
+  status Boolean @default(true)
+  orderType OrderType? @relation(fields: [id_order_type], references: [id])
+  treasury Treasury? @relation(name: "OrderOrigin",fields: [id_origin_treasury], references: [id])
+  treasuryDestiny Treasury? @relation(name:"OrderDestiny", fields: [id_destiny_treasury], references: [id])
+}
+
+model Supply {
+  id Int @id @default(autoincrement())
+  id_atm Int
+  supply_date DateTime
+  value_of_10 Int @default(0)
+  value_of_20 Int @default(0)
+  value_of_50 Int @default(0)
+  value_of_100 Int @default(0)
+  status Boolean @default(true)
+}
