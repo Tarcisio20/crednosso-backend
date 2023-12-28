@@ -14,7 +14,10 @@ model User {
   id Int @id @default(autoincrement())
   name_full String
   email String
+  password String
   last_access_date DateTime
+  user_type String
+  token String
   status Boolean @default(true)
   Log Log[]
 }
@@ -55,11 +58,9 @@ model Treasury {
   balance_cass_D Float
   status Boolean @default(true)
   Atm Atm[]
-  OrderOrigin Order[]
-  OrderDestiny Order[]
+  TreasuryOrigin Order[] @relation("TreasuryOrigin")
+  TreasuryDestiny Order[] @relation("TreasuryDestiny")
 }
-
-
 
 model OperationType {
   id Int @id @default(autoincrement())
@@ -90,8 +91,8 @@ model Order {
   observation String
   status Boolean @default(true)
   orderType OrderType? @relation(fields: [id_order_type], references: [id])
-  treasury Treasury? @relation(name: "OrderOrigin",fields: [id_origin_treasury], references: [id])
-  treasuryDestiny Treasury? @relation(name:"OrderDestiny", fields: [id_destiny_treasury], references: [id])
+  treasuryOrigin Treasury? @relation("TreasuryOrigin",fields: [id_origin_treasury], references: [id])
+  treasuryDestiny Treasury? @relation("TreasuryDestiny", fields: [id_destiny_treasury], references: [id])
 }
 
 model Supply {
