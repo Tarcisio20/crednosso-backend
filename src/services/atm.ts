@@ -10,6 +10,7 @@ export const getAll = async () => {
 type AtmCreateData = Prisma.Args<typeof prisma.atm, 'create'>['data']
 export const createAtm = async ( data : AtmCreateData ) => {
     try {
+        console.log(data)
         return   await prisma.atm.create({ data  })
     } catch(err) { 
         
@@ -21,4 +22,11 @@ export const getOne = async (id : number) => {
     try {
         return await prisma.atm.findUnique({ where : {  id } })
     } catch(err) { return false }
+}
+
+type AtmUpdateData = Prisma.Args<typeof prisma.atm, 'update'>['data']
+export const update = async (id: number, data : AtmUpdateData) => {
+    try {
+
+    } catch(err){ return false }
 }

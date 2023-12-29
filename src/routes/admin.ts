@@ -20,6 +20,7 @@ router.get("/log/user/:id", auth.validate, log.getForUser)
 
 router.get("/atm", auth.validate, atm.getAll)
 router.post("/atm", auth.validate, atm.create)
-router.get("/atm/:id", auth.validate, atm.updateAtm)
+router.get("/atm/:id", auth.validate, atm.getAtm)
+router.put("/atm/:id", auth.validate, atm.updateAtm)
 
 export default router;

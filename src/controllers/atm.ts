@@ -11,30 +11,48 @@ export const getAll : RequestHandler = async (req, res) => {
 
 export const create : RequestHandler = async (req, res) => {
     const atmSchema = z.object({
-        id_system : z.string(),
+        id_system : z.string().transform(Number),
         name_full : z.string(),
         shortened_name : z.string(),
-        id_treasury : z.string()
+        id_treasury : z.string().transform(Number)
     })
 
     const body = atmSchema.safeParse(req.body)
 
     if(!body.success) return res.json({ error : 'Dados inválidos' })
-    const data = {
-        id_system : parseInt(body.data.id_system),
-        name_full : body.data.name_full,
-        shortened_name : body.data.shortened_name,
-        id_treasury : parseInt(body.data.id_treasury),
-    }
-    if(!await atm.createAtm(data)) return res.json({ error : 'Erro ao salvar Atm' })
+ 
+    if(!await atm.createAtm(body.data)) return res.json({ error : 'Erro ao salvar Atm' })
     res.json({ success : 'ATM Cadastrado' })
 }
 
-export const updateAtm : RequestHandler = async (req, res) => {
+export const getAtm : RequestHandler = async (req, res) => {
     const { id } = req.params
 
     const atmRequeried = atm.getOne(parseInt(id))
     if(!atmRequeried) return res.json({ error : 'Erro ao buscar ATM.' })
 
     res.json({ atm : atmRequeried })
+}
+type Props = {
+    id_system ?: number, 
+        name_full ?: string,
+        shortened_name ?: string,
+        id_treasury ?: number
+}
+export const updateAtm : RequestHandler = async (req, res) => {
+    const { id } = req.params
+    const AtmShema = z.object({
+        id_system : z.string().optional().transform(Number),
+        name_full : z.string().optional(),
+        shortened_name : z.string().optional(),
+        id_treasury : z.string().optional().transform(Number)
+    })
+
+    const body = AtmShema.safeParse(req.body)
+    if(!body.success) return res.json({ error : 'Dados invalidos' })
+
+    const updatedAtm = await atm.update(parseInt(id), body.data )
+    if(updateAtm) return res.json({ atm : updateAtm }) 
+
+    res.json({ error : 'Erro ao salvar Atm' })
 }
