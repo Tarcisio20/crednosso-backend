@@ -17,7 +17,7 @@ model User {
   password String
   last_access_date DateTime
   user_type String
-  token String
+  token String  
   status Boolean @default(true)
   Log Log[]
 }

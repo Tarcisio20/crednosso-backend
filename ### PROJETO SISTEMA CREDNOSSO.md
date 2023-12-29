@@ -50,14 +50,14 @@ PLANEJAMENTO DE ROTAS
 
 ROTAS DE ADMIN
 (ADMIN)
---- GET - admin/usuarios
---- GET - admin/usuarios/:id
---- POST - admin/usuarios
---- POST - admin/usuarios/?search=pesquisa
---- PUT - admin/usuarios/:id
---- DEL - admin/usuarios/:id
+--- GET - admin/usuarios - ok
+--- GET - admin/usuarios/:id - ok
+--- POST - admin/usuarios - ok
+--- POST - admin/usuarios/?search=pesquisa - ok
+--- PUT - admin/usuarios/:id - ok
+--- DEL - admin/usuarios/:id - ok
 (LOGS)
---- GET - admin/logs
+--- GET - admin/logs 
 --- GET - admin/logs/:id
 --- POST - admin/logs/?search=pesquisa
 --- POST - admin/logs

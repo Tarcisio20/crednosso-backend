@@ -6,7 +6,7 @@ router.get("/ping", (req, res) => res.json({ pong: true }));
 router.get("/login",(req, res)=>{
     return 'Home'
 });
-router.post("/login",auth.validate, auth.login);
+router.post("/login", auth.login);
 
 
 export default router;
