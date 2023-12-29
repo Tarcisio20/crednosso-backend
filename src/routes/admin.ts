@@ -18,5 +18,6 @@ router.get("/log", auth.validate, log.getAll)
 router.get("/log/user/:id", auth.validate, log.getForUser)
 
 router.get("/atm", auth.validate, atm.getAll)
+router.post("/atm", auth.validate, atm.create)
 
 export default router;

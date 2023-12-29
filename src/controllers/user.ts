@@ -13,19 +13,16 @@ export const getAll : RequestHandler = async (req, res) => {
 }
 
 export const create : RequestHandler = async (req, res) => {
-    try{
-        const userSchema = z.object({
-            name : z.string(),
-            email : z.string(),
-            type : z.string()
-        })
-        const body = userSchema.safeParse(req.body)
-        if(!body.success) return res.json({ error : 'Dados invãlidos!' })
-        if(!await user.createUser(body.data.name, body.data.email, body.data.type)) return res.json({ error : 'Erro ao cadastrar!' })
+    const userSchema = z.object({
+        name : z.string(),
+        email : z.string(),
+        type : z.string()
+    })
+    const body = userSchema.safeParse(req.body)
+    if(!body.success) return res.json({ error : 'Dados invãlidos!' })
+    if(!await user.createUser(body.data.name, body.data.email, body.data.type)) return res.json({ error : 'Erro ao cadastrar!' })
 
-        res.json({ success : 'Usuario cadastrado' })
-
-    }catch(err){ return false }
+    res.json({ success : 'Usuario cadastrado' })
 }
 
 export const getUser : RequestHandler = async (req, res) => {

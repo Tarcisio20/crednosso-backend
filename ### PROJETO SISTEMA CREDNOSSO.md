@@ -62,7 +62,7 @@ ROTAS DE ADMIN
 --- POST - admin/logs/?search=pesquisa
 --- POST - admin/logs
 (ATMS)
---- GET - admin/atms
+--- GET - admin/atms - ok
 --- POST admin/atms
 --- POST - admin/atms/?search=pesquisa
 --- GET - admin/atms/:id
