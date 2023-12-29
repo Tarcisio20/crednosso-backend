@@ -33,13 +33,9 @@ export const getAtm : RequestHandler = async (req, res) => {
 
     res.json({ atm : atmRequeried })
 }
-type Props = {
-    id_system ?: number, 
-        name_full ?: string,
-        shortened_name ?: string,
-        id_treasury ?: number
-}
+
 export const updateAtm : RequestHandler = async (req, res) => {
+
     const { id } = req.params
     const AtmShema = z.object({
         id_system : z.string().optional().transform(Number),
@@ -52,7 +48,7 @@ export const updateAtm : RequestHandler = async (req, res) => {
     if(!body.success) return res.json({ error : 'Dados invalidos' })
 
     const updatedAtm = await atm.update(parseInt(id), body.data )
-    if(updateAtm) return res.json({ atm : updateAtm }) 
+    if(updatedAtm) return res.json({ atm : updateAtm }) 
 
     res.json({ error : 'Erro ao salvar Atm' })
 }
