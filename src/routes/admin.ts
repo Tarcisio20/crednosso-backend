@@ -7,6 +7,7 @@ import * as atm from '../controllers/atm'
 const router = Router();
 
 router.get("/ping", auth.validate,  (req, res) => res.json({ pong: true, admin : true }));
+
 router.get("/user",auth.validate, user.getAll);
 router.post("/user",auth.validate, user.create);
 router.get("/user/:id",auth.validate, user.getUser);
@@ -19,5 +20,6 @@ router.get("/log/user/:id", auth.validate, log.getForUser)
 
 router.get("/atm", auth.validate, atm.getAll)
 router.post("/atm", auth.validate, atm.create)
+router.get("/atm/:id", auth.validate, atm.updateAtm)
 
 export default router;

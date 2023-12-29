@@ -63,9 +63,9 @@ ROTAS DE ADMIN
 --- POST - admin/logs
 (ATMS)
 --- GET - admin/atms - ok
---- POST admin/atms
+--- POST admin/atms - ok
 --- POST - admin/atms/?search=pesquisa
---- GET - admin/atms/:id
+--- GET - admin/atms/:id - ok
 --- PUT - admin/atms/:id
 --- DEL - admin/atms/:id
 (TREASURYS)

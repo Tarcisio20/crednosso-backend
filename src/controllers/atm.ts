@@ -29,3 +29,12 @@ export const create : RequestHandler = async (req, res) => {
     if(!await atm.createAtm(data)) return res.json({ error : 'Erro ao salvar Atm' })
     res.json({ success : 'ATM Cadastrado' })
 }
+
+export const updateAtm : RequestHandler = async (req, res) => {
+    const { id } = req.params
+
+    const atmRequeried = atm.getOne(parseInt(id))
+    if(!atmRequeried) return res.json({ error : 'Erro ao buscar ATM.' })
+
+    res.json({ atm : atmRequeried })
+}
