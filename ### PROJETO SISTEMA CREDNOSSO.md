@@ -74,7 +74,7 @@ ROTAS DE ADMIN
 --- POST - admin/tesourarias - ok
 --- POST - admin/tesourarias/?search=pesquisa
 --- PUT - admin/tesourarias/:id - ok
---- DEL - admin/tesourarias/:id
+--- DEL - admin/tesourarias/:id - ok
 (OPERATION TYPES)
 --- GET - admin/tipos-operacao
 --- GET - admin/tipos-operacao/:id

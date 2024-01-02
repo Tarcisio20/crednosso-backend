@@ -58,3 +58,12 @@ export const updateTreasury : RequestHandler = async (req, res) => {
 
     res.json({ success : 'Transportadora editada', treasury : updatedTreasury })
 }
+
+export const deleteTreasury : RequestHandler = async (req, res) => {
+    const { id } = req.params
+
+    const removedTreasury = await treasury.remove(parseInt(id))
+    if(!removedTreasury) return res.json({ error : 'Erro ao deletar Transportadora, tentar mais tarde' })
+
+    res.json({ success : 'Transportadora deletada' })
+}
