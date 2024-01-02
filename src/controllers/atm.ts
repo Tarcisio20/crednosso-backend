@@ -70,13 +70,13 @@ export const deleteAtm : RequestHandler = async (req, res) => {
 
 export const searchAtm : RequestHandler = async (req, res) => {
     const SearchSchema = z.object({
-        search : z.string()
+        name : z.string()
     })
 
-    const body = SearchSchema.safeParse(req.body)
-    if(!body.success) return res.json({ error : 'Dados invalidos' })
+    const query = SearchSchema.safeParse(req.query)
+    if(!query.success) return res.json({ error : 'Dados invalidos' })
 
-    const search = await atm.getSearch(body.data.search)
+    const search = await atm.getSearch(query.data.name)
     if(search) return res.json({ search }) 
     
     res.json({ error : 'Houve um erro' })
