@@ -37,5 +37,8 @@ router.post("/treasury/search", auth.validate, treasury.searchTreasury)
 router.get("/operation_type", auth.validate, operationType.getAll)
 router.post("/operation_type", auth.validate, operationType.create)
 router.get("/operation_type/:id", auth.validate, operationType.getOperartionType)
+router.put("/operation_type/:id", auth.validate, operationType.updateOperartionType)
+router.delete("/operation_type/:id", auth.validate, operationType.deleteOperartionType)
+router.post("/operation_type/search", auth.validate, operationType.searchOperartionType)
 
 export default router;
