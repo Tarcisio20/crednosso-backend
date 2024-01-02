@@ -52,3 +52,24 @@ export const updateAtm : RequestHandler = async (req, res) => {
 
     res.json({ error : 'Erro ao salvar Atm' })
 }
+
+export const deleteAtm : RequestHandler = async (req, res) => {
+    const { id } = req.params
+    if(!atm.remove) return res.json({ error : 'Erro ao excluir ATM' })
+
+    res.json({ success : 'ATM excluido' })
+}
+
+export const searchAtm : RequestHandler = async (req, res) => {
+    const SearchSchema = z.object({
+        search : z.string()
+    })
+
+    const body = SearchSchema.safeParse(req.body)
+    if(!body.success) return res.json({ error : 'Dados invalidos' })
+
+    const search = await atm.getSearch(body.data.search)
+    if(search) return res.json({ search }) 
+    
+    res.json({ error : 'Houve um erro' })
+}

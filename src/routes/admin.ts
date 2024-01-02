@@ -22,5 +22,7 @@ router.get("/atm", auth.validate, atm.getAll)
 router.post("/atm", auth.validate, atm.create)
 router.get("/atm/:id", auth.validate, atm.getAtm)
 router.put("/atm/:id", auth.validate, atm.updateAtm)
+router.delete("/atm/:id", auth.validate, atm.deleteAtm)
+router.post("/atm/search", auth.validate, atm.searchAtm)
 
 export default router;

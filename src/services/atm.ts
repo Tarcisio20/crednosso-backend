@@ -27,6 +27,20 @@ export const getOne = async (id : number) => {
 type AtmUpdateData = Prisma.Args<typeof prisma.atm, 'update'>['data']
 export const update = async (id: number, data : AtmUpdateData) => {
     try {
-
+        return await prisma.atm.update({ where : { id }, data })
     } catch(err){ return false }
+}
+
+export const remove = async (id :number) => {
+    try {
+        return await prisma.atm.delete({ where : { id } })
+    } catch(err){ return false }
+}
+
+export const getSearch = async (partial : string) => {
+    try{
+        return  await prisma.user.findMany({ where : 
+            { name_full :  { contains : partial } } 
+        })    
+    }catch(err){ return false}
 }
