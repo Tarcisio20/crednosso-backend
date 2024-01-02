@@ -14,7 +14,15 @@ export const create : RequestHandler = async (req, res) => {
         id_system : z.string().transform(Number),
         name_full : z.string(),
         shortened_name : z.string(),
-        id_treasury : z.string().transform(Number)
+        id_treasury : z.string().transform(Number),
+        config_cass_A : z.string().transform(Number),
+        config_cass_B : z.string().transform(Number),
+        config_cass_C : z.string().transform(Number),
+        config_cass_D : z.string().transform(Number),
+        balance_cass_A : z.string().transform(parseFloat),
+        balance_cass_B : z.string().transform(parseFloat),
+        balance_cass_C : z.string().transform(parseFloat),
+        balance_cass_D : z.string().transform(parseFloat),
     })
 
     const body = atmSchema.safeParse(req.body)

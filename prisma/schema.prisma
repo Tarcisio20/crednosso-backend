@@ -39,15 +39,6 @@ model Atm {
   name_full String
   shortened_name String
   id_treasury Int
-  status Boolean @default(true)
-  treasury Treasury? @relation(fields: [id_treasury], references: [id])
-}
-
-model Treasury {
-  id Int @id @default(autoincrement())
-  id_systen Int
-  name_full String
-  shortened_name String
   config_cass_A Int
   config_cass_B Int
   config_cass_C Int
@@ -56,6 +47,19 @@ model Treasury {
   balance_cass_B Float
   balance_cass_C Float
   balance_cass_D Float
+  status Boolean @default(true)
+  treasury Treasury? @relation(fields: [id_treasury], references: [id])
+}
+
+model Treasury {
+  id Int @id @default(autoincrement())
+  id_system Int
+  name_full String
+  shortened_name String
+  balance_cass_10 Float
+  balance_cass_20 Float
+  balance_cass_50 Float
+  balance_cass_100 Float
   status Boolean @default(true)
   Atm Atm[]
   TreasuryOrigin Order[] @relation("TreasuryOrigin")

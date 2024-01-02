@@ -12,8 +12,8 @@ export const login : RequestHandler = async (req, res) => {
     const body = loginSchema.safeParse(req.body)
     if(!body.success) return res.json({ error : 'Dados invãlidos!' })
     const userReturn = await auth.loginUser(body.data.email, body.data.password)
+    console.log("USER => ", userReturn) 
     if(!userReturn) return  res.status(403).json({ error : 'Acesso Negado' })
-     console.log("USUARIO RETORNADO => ", userReturn)
     res.json({ userReturn })
     
     }catch(error){ return false }

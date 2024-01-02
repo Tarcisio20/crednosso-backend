@@ -3,7 +3,10 @@ CREATE TABLE `User` (
     `id` INTEGER NOT NULL AUTO_INCREMENT,
     `name_full` VARCHAR(191) NOT NULL,
     `email` VARCHAR(191) NOT NULL,
+    `password` VARCHAR(191) NOT NULL,
     `last_access_date` DATETIME(3) NOT NULL,
+    `user_type` VARCHAR(191) NOT NULL,
+    `token` VARCHAR(191) NOT NULL,
     `status` BOOLEAN NOT NULL DEFAULT true,
 
     PRIMARY KEY (`id`)
@@ -27,17 +30,6 @@ CREATE TABLE `Atm` (
     `name_full` VARCHAR(191) NOT NULL,
     `shortened_name` VARCHAR(191) NOT NULL,
     `id_treasury` INTEGER NOT NULL,
-    `status` BOOLEAN NOT NULL DEFAULT true,
-
-    PRIMARY KEY (`id`)
-) DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
-
--- CreateTable
-CREATE TABLE `Treasury` (
-    `id` INTEGER NOT NULL AUTO_INCREMENT,
-    `id_systen` INTEGER NOT NULL,
-    `name_full` VARCHAR(191) NOT NULL,
-    `shortened_name` VARCHAR(191) NOT NULL,
     `config_cass_A` INTEGER NOT NULL,
     `config_cass_B` INTEGER NOT NULL,
     `config_cass_C` INTEGER NOT NULL,
@@ -46,6 +38,21 @@ CREATE TABLE `Treasury` (
     `balance_cass_B` DOUBLE NOT NULL,
     `balance_cass_C` DOUBLE NOT NULL,
     `balance_cass_D` DOUBLE NOT NULL,
+    `status` BOOLEAN NOT NULL DEFAULT true,
+
+    PRIMARY KEY (`id`)
+) DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
+
+-- CreateTable
+CREATE TABLE `Treasury` (
+    `id` INTEGER NOT NULL AUTO_INCREMENT,
+    `id_system` INTEGER NOT NULL,
+    `name_full` VARCHAR(191) NOT NULL,
+    `shortened_name` VARCHAR(191) NOT NULL,
+    `balance_cass_10` DOUBLE NOT NULL,
+    `balance_cass_20` DOUBLE NOT NULL,
+    `balance_cass_50` DOUBLE NOT NULL,
+    `balance_cass_100` DOUBLE NOT NULL,
     `status` BOOLEAN NOT NULL DEFAULT true,
 
     PRIMARY KEY (`id`)

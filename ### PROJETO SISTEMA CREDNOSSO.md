@@ -66,10 +66,10 @@ ROTAS DE ADMIN
 --- POST admin/atms - ok
 --- POST - admin/atms/?search=pesquisa
 --- GET - admin/atms/:id - ok
---- PUT - admin/atms/:id
---- DEL - admin/atms/:id
+--- PUT - admin/atms/:id - ok
+--- DEL - admin/atms/:id - ok
 (TREASURYS)
---- GET - admin/tesourarias
+--- GET - admin/tesourarias 
 --- GET - admin/tesourarias/:id
 --- POST - admin/tesourarias
 --- POST - admin/tesourarias/?search=pesquisa

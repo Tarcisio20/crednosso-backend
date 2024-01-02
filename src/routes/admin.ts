@@ -3,6 +3,7 @@ import * as auth from '../controllers/auth'
 import * as user from '../controllers/user'
 import * as log from '../controllers/log'
 import * as atm from '../controllers/atm'
+import * as treasury from '../controllers/treasury'
 
 const router = Router();
 
@@ -24,5 +25,8 @@ router.get("/atm/:id", auth.validate, atm.getAtm)
 router.put("/atm/:id", auth.validate, atm.updateAtm)
 router.delete("/atm/:id", auth.validate, atm.deleteAtm)
 router.post("/atm/search", auth.validate, atm.searchAtm)
+
+router.get("/treasury", auth.validate, treasury.getAll)
+router.post("/treasury", auth.validate, treasury.create)
 
 export default router;

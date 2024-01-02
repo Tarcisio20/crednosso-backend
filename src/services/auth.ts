@@ -1,4 +1,5 @@
-import { PrismaClient } from 'prisma/prisma-client'
+import { Prisma, PrismaClient } from 'prisma/prisma-client'
+import { clearEmail } from '../utils/clearEmail';
 const bcrypt = require('bcrypt');
 
 const saltRounds = 10 //process.env.SALT_ROUNDS
@@ -58,9 +59,11 @@ export const setToken = async (idUser : number, tokenUser : string) => {
     }
 }
 // FUNCTIONS
-export const loginUser = async (email : string, password : string) => {
-    try{
-        const user = await prisma.user.findFirst({ where : { email } })
+export const loginUser = async (email : string, password : string) => { 
+
+  try{  
+        
+        const user = await prisma.user.findFirst({ where : { email : email } })
 
         if(!user?.id) return false
         if(!await comparePassword(password, user.password)) return false
