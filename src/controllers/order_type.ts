@@ -29,3 +29,20 @@ export const getOrderType : RequestHandler = async (req, res) => {
 
     res.json({ orderType : OrderTypeOne })
 }
+
+export const updateOrderType : RequestHandler = async (req, res) => {
+    const { id } = req.params
+
+    const orderTypeSchema = z.object({
+        name_full : z.string().optional(),
+        status : z.boolean().optional()
+    })
+
+    const body = orderTypeSchema.safeParse(req.body)
+    if(!body.success) return res.json({ error : 'Dados inválidos!' })
+
+    const updatedOrderType = await orderType.update(parseInt(id), body.data)
+    if(!updatedOrderType) return res.json({ error : 'Erro ao editar o Tipo de Ordem' })
+
+    res.json({ success : 'Tipo de ordem atualizada com sucesso!', orderType : updatedOrderType })
+}
