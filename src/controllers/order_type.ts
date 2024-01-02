@@ -20,3 +20,12 @@ export const create : RequestHandler = async (req, res) => {
     if(!orderTypeCreate) return res.json({ error : 'Erro ao salvar um Tipo de Ordem' })
     res.json({ success : 'Tipo de Ordem cadastrada!', orderType : orderTypeCreate})
 }
+
+export const getOrderType : RequestHandler = async (req, res) => {
+    const { id } = req.params
+
+    const OrderTypeOne = await orderType.getOne(parseInt(id))
+    if(!OrderTypeOne) return res.json({ error : 'Erro ao retornar o Tipo de Ordem' })
+
+    res.json({ orderType : OrderTypeOne })
+}

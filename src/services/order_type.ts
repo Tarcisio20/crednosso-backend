@@ -14,3 +14,9 @@ export const create = async (data : CreateOrderTypeData) => {
         return await prisma.orderType.create({ data })
     } catch(err){ return false }
 }
+
+export const getOne = async (id : number) => {
+    try {
+        return await prisma.orderType.findUnique({ where : { id } })
+    } catch(err){ return false }
+}
