@@ -1,6 +1,6 @@
 import { RequestHandler } from "express";
 import * as treasury from '../services/treasury'
-import { z } from "zod";
+import { string, z } from "zod";
 
 
 export const getAll : RequestHandler = async (req, res) => {
@@ -66,4 +66,18 @@ export const deleteTreasury : RequestHandler = async (req, res) => {
     if(!removedTreasury) return res.json({ error : 'Erro ao deletar Transportadora, tentar mais tarde' })
 
     res.json({ success : 'Transportadora deletada' })
+}
+
+export const searchTreasury : RequestHandler = async (req, res) => {
+    const searchSchema = z.object({
+        name : string()
+    })
+
+    const query = searchSchema.safeParse(req.query)
+     if(!query.success) return res.json({ error : 'Dados invalidos' })
+    const search = await treasury.search(query.data.name)
+    console.log(search)
+    if(!search) return res.json({ error : 'Erro ao retornar dados ' })
+
+    res.json({ treasuries : search })
 }

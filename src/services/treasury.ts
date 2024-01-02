@@ -33,3 +33,11 @@ export const remove = async (id : number) => {
         return await prisma.treasury.delete({ where : { id } })
     } catch(err){ return false }
 }
+
+export const search = async (partial : string) => {
+    try {
+        return await prisma.treasury.findMany({ where : { name_full : 
+            { contains  : partial }
+         } })
+    } catch(err) { return false }
+}

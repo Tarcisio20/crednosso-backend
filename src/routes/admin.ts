@@ -31,5 +31,6 @@ router.post("/treasury", auth.validate, treasury.create)
 router.get("/treasury/:id", auth.validate, treasury.getTreasury)
 router.put("/treasury/:id", auth.validate, treasury.updateTreasury)
 router.delete("/treasury/:id", auth.validate, treasury.deleteTreasury)
+router.post("/treasury/search", auth.validate, treasury.searchTreasury)
 
 export default router;
