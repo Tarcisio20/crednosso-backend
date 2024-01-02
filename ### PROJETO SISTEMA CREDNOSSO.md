@@ -79,9 +79,9 @@ ROTAS DE ADMIN
 --- GET - admin/tipos-operacao - ok
 --- GET - admin/tipos-operacao/:id - ok
 --- POST - admin/tipos-operacao - ok
---- POST - admin/tipos-operacao/?search=pesquisa
---- PUT - admin/tipos-operacao/:id
---- DEL - admin/tipos-operacao/:id
+--- POST - admin/tipos-operacao/?search=pesquisa - ok
+--- PUT - admin/tipos-operacao/:id - ok
+--- DEL - admin/tipos-operacao/:id - ok
 (ORDER TYPES)
 --- GET - admin/tipos-pedidos
 --- GET - admin/tipos-pedidos/:id
