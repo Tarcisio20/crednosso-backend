@@ -69,9 +69,9 @@ ROTAS DE ADMIN
 --- PUT - admin/atms/:id - ok
 --- DEL - admin/atms/:id - ok
 (TREASURYS)
---- GET - admin/tesourarias 
---- GET - admin/tesourarias/:id
---- POST - admin/tesourarias
+--- GET - admin/tesourarias - ok
+--- GET - admin/tesourarias/:id - ok
+--- POST - admin/tesourarias - ok
 --- POST - admin/tesourarias/?search=pesquisa
 --- PUT - admin/tesourarias/:id
 --- DEL - admin/tesourarias/:id

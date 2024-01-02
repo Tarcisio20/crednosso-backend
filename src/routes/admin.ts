@@ -28,5 +28,6 @@ router.post("/atm/search", auth.validate, atm.searchAtm)
 
 router.get("/treasury", auth.validate, treasury.getAll)
 router.post("/treasury", auth.validate, treasury.create)
+router.get("/treasury/:id", auth.validate, treasury.getTreasury)
 
 export default router;

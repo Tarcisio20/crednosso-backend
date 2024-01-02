@@ -14,3 +14,9 @@ export const createTreasury = async (data : CreateTreasuryData) => {
         return await prisma.treasury.create({ data })
     } catch(err){ return false }
 }
+
+export const getOne = async (id : number) => {
+    try {
+        return await prisma.treasury.findMany({ where : { id } })
+    } catch(err) { return false }
+}

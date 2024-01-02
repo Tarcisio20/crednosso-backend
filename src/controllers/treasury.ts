@@ -27,3 +27,12 @@ export const create : RequestHandler = async (req, res) => {
     
     res.json({ success : 'Tesouraria Cadastrada' })
 }
+
+export const getTreasury : RequestHandler = async (req, res) => {
+        const { id } = req.params
+
+        const item = await treasury.getOne(parseInt(id))
+        if(!item) return res.json({ error : 'Erro ao retornar uma transportadora' })
+
+        res.json({ treasury : item  })
+}
