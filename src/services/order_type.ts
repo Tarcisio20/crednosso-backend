@@ -34,3 +34,9 @@ export const remove = async (id : number) => {
         return await prisma.orderType.update({ where : { id }, data })
     } catch(err){ return false }
 }
+
+export const search = async (partial : string) => {
+    try{
+        return await prisma.orderType.findMany({ where : { name_full : { contains : partial } } })
+    } catch(err){ return false }
+}

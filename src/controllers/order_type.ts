@@ -55,3 +55,16 @@ export const deleteOrderType : RequestHandler = async (req, res) => {
 
     res.json({ success :  'Tipo de Ordem deletado com sucesso' })
 }
+
+export const searchOrderType : RequestHandler = async (req, res) => {
+    const  searchSchema = z.object({
+        name : z.string()
+    })
+
+    const query = searchSchema.safeParse(req.query)
+    if(!query.success) return res.json({ error : 'Dados inválidos' })
+    const search = await orderType.search(query.data.name)
+    if(!search) return res.json({ error : 'Erro ao retornar os Tipos de Ordem' })
+
+    res.json({ orderTypes : search })
+}
