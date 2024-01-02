@@ -46,3 +46,12 @@ export const updateOrderType : RequestHandler = async (req, res) => {
 
     res.json({ success : 'Tipo de ordem atualizada com sucesso!', orderType : updatedOrderType })
 }
+
+export const deleteOrderType : RequestHandler = async (req, res) => {
+    const { id } = req.params
+
+    const deletedOrderType = await orderType.remove(parseInt(id))
+    if(!deletedOrderType) return res.json({ error : 'Erro ao deletar o tipo de Ordem' })
+
+    res.json({ success :  'Tipo de Ordem deletado com sucesso' })
+}

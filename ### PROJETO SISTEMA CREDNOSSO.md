@@ -87,7 +87,7 @@ ROTAS DE ADMIN
 --- GET - admin/tipos-pedidos/:id - ok
 --- POST - admin/tipos-pedidos - ok
 --- POST - admin/tipos-pedido/?search=pesquisa
---- PUT - admin/tipos-pedidos/:id
+--- PUT - admin/tipos-pedidos/:id - ok
 --- DEL - admin/tipos-pedidos/:id
 (ORDERS)
 --- GET - admin/pedidos
