@@ -14,3 +14,9 @@ export const createOperationType = async (data : CreateOperationTypeData) => {
         return await prisma.operationType.create({ data })
     } catch(err) { return false }
 }
+
+export const getOne = async (id : number) => {
+    try {
+        return await prisma.operationType.findMany({ where : { id } })
+    } catch(err) { return false }
+}

@@ -36,5 +36,6 @@ router.post("/treasury/search", auth.validate, treasury.searchTreasury)
 
 router.get("/operation_type", auth.validate, operationType.getAll)
 router.post("/operation_type", auth.validate, operationType.create)
+router.get("/operation_type/:id", auth.validate, operationType.getOperartionType)
 
 export default router;
