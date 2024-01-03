@@ -91,10 +91,10 @@ ROTAS DE ADMIN
 --- DEL - admin/tipos-pedidos/:id - ok
 (ORDERS)
 --- GET - admin/pedidos - ok
---- GET - admin/pedidos/:id
+--- GET - admin/pedidos/:id - ok
 --- POST - admin/pedidos - ok
 --- POST - admin/pedidos/?search=pesquisa
---- PUT - admin/pedidos/:id
+--- PUT - admin/pedidos/:id -
 --- DEL - admin/pedidos/:id
 (SUPPLY)
 --- GET - admin/abastecimentos

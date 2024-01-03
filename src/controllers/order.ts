@@ -58,3 +58,23 @@ export const getOrder : RequestHandler = async (req, res) => {
 
     res.json({ order : OneOrder })
 }
+
+export const updateOrder : RequestHandler = async (req, res) => {
+    const { id } = req.params
+
+    const orderSchema = z.object({
+        value_of_10 : z.string().transform(Number).optional(),
+        value_of_20 : z.string().transform(Number).optional(),
+        value_of_50 : z.string().transform(Number).optional(),
+        value_of_100 : z.string().transform(Number).optional(),
+        observation : z.string().optional()
+    })
+
+    const body = orderSchema.safeParse(req.body)
+    if(!body.success) return res.json({ error : "Dados inválidos" })
+
+    const updatedOrder = await order.update( parseInt(id), body.data )
+    if(!updatedOrder) return res.json({ error : 'Erro ao editar Pedido' })
+
+    res.json({ success : 'Pedido Editado com sucesso', order : updatedOrder })
+}
