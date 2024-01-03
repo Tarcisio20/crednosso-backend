@@ -14,3 +14,9 @@ export const create = async (data : CreateSuppyData)=>  {
         return await prisma.supply.create({ data })
     }catch(err){ return false }
 }
+
+export const getOne = async (id : number) => {
+    try{
+        return await prisma.supply.findUnique({ where : { id } })
+    }catch(err) { return false }
+}

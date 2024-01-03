@@ -98,8 +98,8 @@ ROTAS DE ADMIN
 --- DEL - admin/pedidos/:id - ok
 (SUPPLY)
 --- GET - admin/abastecimentos - ok
---- GET - admin/abastecimentos/:id
---- POST - admin/abastecimentos
+--- GET - admin/abastecimentos/:id - ok
+--- POST - admin/abastecimentos - ok
 --- POST - admin/abastecimentos/?search=pesquisa
 --- PUT - admin/abastecimentos/:id
 --- DEL - admin/abastecimentos/:id

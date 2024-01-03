@@ -35,3 +35,12 @@ export const create : RequestHandler = async (req, res) => {
 
     res.json({ success : 'Abastecimento salvo com sucesso', supply : supplyCreate })
 }
+
+export const getSupply : RequestHandler = async (req, res) => {
+    const { id } = req.params
+
+    const supplyOne = await supply.getOne(parseInt(id))
+    if(!supplyOne) return res.json({ error : 'Erro ao retornar abastecimento' })
+
+    res.json({ supply : supplyOne })
+}

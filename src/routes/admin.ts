@@ -60,5 +60,6 @@ router.post("/order/search", auth.validate, order.searchOrder)
 
 router.get("/supply", auth.validate, supply.getAll)
 router.post("/supply", auth.validate, supply.create)
+router.get("/supply/:id", auth.validate, supply.getSupply)
 
 export default router;
