@@ -92,7 +92,7 @@ ROTAS DE ADMIN
 (ORDERS)
 --- GET - admin/pedidos - ok
 --- GET - admin/pedidos/:id
---- POST - admin/pedidos
+--- POST - admin/pedidos - ok
 --- POST - admin/pedidos/?search=pesquisa
 --- PUT - admin/pedidos/:id
 --- DEL - admin/pedidos/:id

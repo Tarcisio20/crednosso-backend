@@ -52,5 +52,6 @@ router.post("/order_type/search", auth.validate, orderType.searchOrderType)
 
 router.get("/order", auth.validate, order.getAll)
 router.post("/order", auth.validate, order.create)
+router.get("/order/:id", auth.validate, order.getOrder)
 
 export default router;

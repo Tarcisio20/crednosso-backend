@@ -14,3 +14,9 @@ export const create = async ( data : CreateOrderData ) => {
         return await prisma.order.create({ data })
     } catch(err) { console.log(err) }
 }
+
+export const getOne = async (id : number) => {
+    try{
+        return await prisma.order.findMany({ where : { id } })
+    }catch(err){ return false }
+}

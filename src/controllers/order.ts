@@ -49,3 +49,12 @@ export const create : RequestHandler = async (req, res) => {
 
     res.json({ success : 'Pedido Salvo', order : orderCreate})
 }
+
+export const getOrder : RequestHandler = async (req, res) => {
+    const { id } = req.params
+
+    const OneOrder = await order.getOne(parseInt(id))
+    if(!OneOrder) return res.json({ error : 'Erro ao retornar um Pedido' })
+
+    res.json({ order : OneOrder })
+}
