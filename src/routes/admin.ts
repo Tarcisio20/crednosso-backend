@@ -55,5 +55,6 @@ router.post("/order", auth.validate, order.create)
 router.get("/order/:id", auth.validate, order.getOrder)
 router.put("/order/:id", auth.validate, order.updateOrder)
 router.delete("/order/:id", auth.validate, order.deleteOrder)
+router.post("/order/search", auth.validate, order.searchOrder)
 
 export default router;

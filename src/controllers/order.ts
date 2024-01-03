@@ -88,3 +88,16 @@ export const deleteOrder : RequestHandler = async (req, res) => {
 
     res.json({ success : 'Pedido deletado com sucesso', order : deletedOrder })
 }
+
+export const searchOrder : RequestHandler = async (req, res) => {
+    const searchSchema = z.object({
+        batch : z.string().transform(Number)
+    })
+
+    const query = searchSchema.safeParse(req.query)
+    if(!query.success) return res.json('Erro ao retornar')
+    const search = await order.search(query.data.batch)
+    if(!search) return res.json({ error :  'Houve um erro em retornar a sua pesquisa, favor tentar mais tarde!' })
+
+    res.json({ order : search })
+}

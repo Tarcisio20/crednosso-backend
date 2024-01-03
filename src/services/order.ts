@@ -35,3 +35,9 @@ export const remove = async (id : number) => {
         return await prisma.order.update({ where : { id }, data })
     }catch(err) { return false }
 }
+
+export const search = async (batch : number) => {
+    try {
+        return await prisma.order.findMany({ where : {  batch } })
+    }catch(err) { return false }
+}
