@@ -93,11 +93,11 @@ ROTAS DE ADMIN
 --- GET - admin/pedidos - ok
 --- GET - admin/pedidos/:id - ok
 --- POST - admin/pedidos - ok
---- POST - admin/pedidos/?search=pesquisa - 
+--- POST - admin/pedidos/?search=pesquisa - ok
 --- PUT - admin/pedidos/:id - ok
 --- DEL - admin/pedidos/:id - ok
 (SUPPLY)
---- GET - admin/abastecimentos
+--- GET - admin/abastecimentos - ok
 --- GET - admin/abastecimentos/:id
 --- POST - admin/abastecimentos
 --- POST - admin/abastecimentos/?search=pesquisa

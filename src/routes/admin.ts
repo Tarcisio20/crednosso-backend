@@ -7,6 +7,7 @@ import * as treasury from '../controllers/treasury'
 import * as operationType from '../controllers/operation_type'
 import * as orderType from '../controllers/order_type'
 import * as order from '../controllers/order'
+import * as supply from '../controllers/supply'
 
 const router = Router();
 
@@ -56,5 +57,7 @@ router.get("/order/:id", auth.validate, order.getOrder)
 router.put("/order/:id", auth.validate, order.updateOrder)
 router.delete("/order/:id", auth.validate, order.deleteOrder)
 router.post("/order/search", auth.validate, order.searchOrder)
+
+router.get("/supply", auth.validate, supply.getAll)
 
 export default router;
