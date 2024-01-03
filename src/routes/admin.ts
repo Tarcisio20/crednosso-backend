@@ -59,5 +59,6 @@ router.delete("/order/:id", auth.validate, order.deleteOrder)
 router.post("/order/search", auth.validate, order.searchOrder)
 
 router.get("/supply", auth.validate, supply.getAll)
+router.post("/supply", auth.validate, supply.create)
 
 export default router;
