@@ -78,3 +78,13 @@ export const updateOrder : RequestHandler = async (req, res) => {
 
     res.json({ success : 'Pedido Editado com sucesso', order : updatedOrder })
 }
+
+export const deleteOrder : RequestHandler = async (req, res) => {
+    const { id } = req.params
+    
+
+    const deletedOrder = await order.remove(parseInt(id))
+    if(!deletedOrder) return res.json({error : 'Erro ao deletar esse Pedido' })
+
+    res.json({ success : 'Pedido deletado com sucesso', order : deletedOrder })
+}
