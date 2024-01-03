@@ -31,4 +31,7 @@ export const create : RequestHandler = async (req, res) => {
         value_of_100 : body.data.value_of_100
     } 
     const supplyCreate = await supply.create(data)
+    if(!supplyCreate) return res.json({ error : 'Erro ao salvar o Abastecimento' })
+
+    res.json({ success : 'Abastecimento salvo com sucesso', supply : supplyCreate })
 }
