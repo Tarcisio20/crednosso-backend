@@ -62,5 +62,6 @@ router.get("/supply", auth.validate, supply.getAll)
 router.post("/supply", auth.validate, supply.create)
 router.get("/supply/:id", auth.validate, supply.getSupply)
 router.put("/supply/:id", auth.validate, supply.updateSupply)
+router.delete("/supply/:id", auth.validate, supply.deleteSupply)
 
 export default router;

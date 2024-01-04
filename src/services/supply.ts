@@ -27,3 +27,10 @@ export const update = async (id : number, data : UpdateSupplyData) => {
         return await prisma.supply.update({ where : { id }, data })
     } catch(err){ return false }
 }  
+
+export const remove = async (id : number) => {
+    const data = { status : false }
+    try{
+        return await prisma.supply.update({ where : { id }, data })
+    }catch(err){ return false }
+}

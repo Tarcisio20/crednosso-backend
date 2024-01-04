@@ -61,3 +61,12 @@ export const updateSupply : RequestHandler = async (req, res) => {
 
     res.json({ supply : updatedSupply })
 }
+
+export const deleteSupply : RequestHandler = async (req, res) => {
+    const { id } = req.params
+
+    const deletedSupply = await supply.remove(parseInt(id))
+    if(!deletedSupply) return res.json({ error : 'Problemas ao deletar Abastecimento, favor tentar mais tarde!' })
+
+    res.json({ success : 'Abastecimento deletado com sucesso!', supply : deletedSupply })
+}
