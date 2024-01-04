@@ -20,3 +20,10 @@ export const getOne = async (id : number) => {
         return await prisma.supply.findUnique({ where : { id } })
     }catch(err) { return false }
 }
+
+type UpdateSupplyData = Prisma.Args<typeof prisma.supply, 'update'>['data']
+export const update = async (id : number, data : UpdateSupplyData) => {
+    try{
+        return await prisma.supply.update({ where : { id }, data })
+    } catch(err){ return false }
+}  
