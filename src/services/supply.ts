@@ -34,3 +34,15 @@ export const remove = async (id : number) => {
         return await prisma.supply.update({ where : { id }, data })
     }catch(err){ return false }
 }
+
+export const search = async (id : number) => {
+    try {
+        return await prisma.supply.findMany({ where : { id } })
+    }catch(err) { return false }
+}
+
+export const searchSupplyByIdAtm = async (id : number) => {
+    try{
+        return await prisma.supply.findMany({ where : { id_atm : id } })
+    }catch(err){ return false }
+}

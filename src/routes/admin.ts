@@ -63,5 +63,7 @@ router.post("/supply", auth.validate, supply.create)
 router.get("/supply/:id", auth.validate, supply.getSupply)
 router.put("/supply/:id", auth.validate, supply.updateSupply)
 router.delete("/supply/:id", auth.validate, supply.deleteSupply)
+router.post("/supply/search/:id", auth.validate, supply.searchSupply)
+router.post("/supply/search/atm/:id", auth.validate, supply.searchForIdAtmSupply)
 
 export default router;

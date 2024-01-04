@@ -70,3 +70,21 @@ export const deleteSupply : RequestHandler = async (req, res) => {
 
     res.json({ success : 'Abastecimento deletado com sucesso!', supply : deletedSupply })
 }
+
+export const searchSupply : RequestHandler = async (req, res) => {
+    const { id } = req.params
+
+    const search = await supply.search(parseInt(id))
+    if(!search) return res.json({ error : 'Erro ao pesquisar o abastecimento.' })
+
+    res.json({ searchs : search })
+}
+
+export const searchForIdAtmSupply : RequestHandler = async (req, res) => {
+    const { id } = req.params
+
+    const searchSupply = await supply.searchSupplyByIdAtm(parseInt(id))
+    if(!searchSupply) return res.json({ error : 'Erro ao retornar abastecimentos, favor tentara mais tarde!' })
+
+    res.json({ searchs : searchSupply })
+}

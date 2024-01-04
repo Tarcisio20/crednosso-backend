@@ -100,7 +100,7 @@ ROTAS DE ADMIN
 --- GET - admin/abastecimentos - ok
 --- GET - admin/abastecimentos/:id - ok
 --- POST - admin/abastecimentos - ok
---- POST - admin/abastecimentos/?search=pesquisa
+--- POST - admin/abastecimentos/?search=pesquisa - ok
 --- PUT - admin/abastecimentos/:id - ok
 --- DEL - admin/abastecimentos/:id - ok
 
