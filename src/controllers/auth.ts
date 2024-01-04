@@ -4,7 +4,6 @@ import { z } from "zod";
 import * as auth from '../services/auth'
 
 export const login : RequestHandler = async (req, res) => {
-    try{
     const loginSchema = z.object({
         email : z.string(),
         password: z.string()
@@ -15,9 +14,6 @@ export const login : RequestHandler = async (req, res) => {
     console.log("USER => ", userReturn) 
     if(!userReturn) return  res.status(403).json({ error : 'Acesso Negado' })
     res.json({ userReturn })
-    
-    }catch(error){ return false }
-   
 }
 
 export const validate : RequestHandler = async (req, res, next) => {
