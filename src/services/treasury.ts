@@ -29,8 +29,9 @@ export const update = async (id : number, data : UpdateTreasuryData) => {
 } 
 
 export const remove = async (id : number) => {
+    const data = { status : false }
     try {
-        return await prisma.treasury.delete({ where : { id } })
+        return await prisma.treasury.update({ where : { id }, data })
     } catch(err){ return false }
 }
 

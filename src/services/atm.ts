@@ -33,8 +33,9 @@ export const update = async (id: number, data : AtmUpdateData) => {
 }
 
 export const remove = async (id :number) => {
+    const data = { status : false }
     try {
-        return await prisma.atm.delete({ where : { id } })
+        return await prisma.atm.update({ where : { id }, data })
     } catch(err){ return false }
 }
 

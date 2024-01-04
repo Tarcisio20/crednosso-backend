@@ -1,5 +1,4 @@
 import { Prisma, PrismaClient } from 'prisma/prisma-client'
-import { RequestHandler } from "express";
 import { hashPassword } from './auth'
 
 const prisma = new PrismaClient()
@@ -43,8 +42,9 @@ export const update = async (id : number, data : UserUpdateData) => {
 }
 
 export const remove =  async (id : number) => {
+    const data = { status : false }
     try{
-        return await prisma.user.delete({ where : { id } })
+        return await prisma.user.update({ where : { id }, data })
     }catch(err) { return false }
 }
 
