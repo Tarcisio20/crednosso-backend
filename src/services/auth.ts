@@ -72,6 +72,7 @@ export const loginUser = async (email: string, password: string) => {
     const item = {
       idUser: user.id,
       name: user.name_full,
+      last_login: user.last_access_date,
       token: token,
       nivel: user.user_type,
     };
