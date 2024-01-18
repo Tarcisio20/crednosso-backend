@@ -1,74 +1,82 @@
-import { PrismaClient } from 'prisma/prisma-client'
-const bcrypt = require('bcrypt');
+import { PrismaClient } from "prisma/prisma-client";
+const bcrypt = require("bcrypt");
 
-const saltRounds = 10 //process.env.SALT_ROUNDS
-const prisma = new PrismaClient()
+const saltRounds = 10; //process.env.SALT_ROUNDS
+const prisma = new PrismaClient();
 
-export const hashPassword = async (password : string) => {
+export const hashPassword = async (password: string) => {
   try {
-    const salt = await bcrypt.genSalt(saltRounds)
+    const salt = await bcrypt.genSalt(saltRounds);
     const hashedPassword = await bcrypt.hash(password, salt);
     return hashedPassword;
   } catch (error) {
-    return false
+    return false;
   }
-}
+};
 
-export const comparePassword = async (inputPassword : string, hashedPassword :string)  => {
+export const comparePassword = async (
+  inputPassword: string,
+  hashedPassword: string
+) => {
   try {
     const match = await bcrypt.compare(inputPassword, hashedPassword);
     return match;
   } catch (error) {
-    return false
+    return false;
   }
-}
+};
 
-export const createToken = async (email : string) => {
+export const createToken = async (email: string) => {
   try {
-    const salt = await bcrypt.genSalt(saltRounds)
+    const salt = await bcrypt.genSalt(saltRounds);
     const hashedToken = await bcrypt.hash(email, salt);
     return hashedToken;
   } catch (error) {
-    return false
+    return false;
   }
-}
+};
 
-export const validadeToken = async (idUser : string, tokenUser : string) => {
+export const validadeToken = async (idUser: string, tokenUser: string) => {
   try {
-    const iUser = parseInt(idUser)
-    const user = await prisma.user.findFirst({ where : { id : iUser } })
-    if(user == null) return false
+    const iUser = parseInt(idUser);
+    const user = await prisma.user.findFirst({ where: { id: iUser } });
+    if (user == null) return false;
     const match = await bcrypt.compare(tokenUser, user?.token);
-    return true; 
+    return true;
   } catch (error) {
-    return false
+    return false;
   }
-}
+};
 
-export const setToken = async (idUser : number, tokenUser : string) => {
-  try{
+export const setToken = async (idUser: number, tokenUser: string) => {
+  try {
     const registerAlter = await prisma.user.update({
-      where : { id : idUser  },
-      data : { token : tokenUser }
-    })
-    return true
+      where: { id: idUser },
+      data: { token: tokenUser },
+    });
+    return true;
   } catch (error) {
-    return false
+    return false;
   }
-}
+};
 // FUNCTIONS
-export const loginUser = async (email : string, password : string) => { 
-  try{  
-    const user = await prisma.user.findFirst({ where : { email : email } })
+export const loginUser = async (email: string, password: string) => {
+  try {
+    const user = await prisma.user.findFirst({ where: { email: email } });
 
-    if(!user?.id) return false
-    if(!await comparePassword(password, user.password)) return false
-        
-    const token = await createToken(user.email)
-    await setToken(user.id, token)
-    const item = { idUser : user.id, token : token, nivel : user.user_type }  
-    return item
-  }catch (error) {
-    return false
+    if (!user?.id) return false;
+    if (!(await comparePassword(password, user.password))) return false;
+
+    const token = await createToken(user.email);
+    await setToken(user.id, token);
+    const item = {
+      idUser: user.id,
+      name: user.name_full,
+      token: token,
+      nivel: user.user_type,
+    };
+    return item;
+  } catch (error) {
+    return false;
   }
-}
+};
