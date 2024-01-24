@@ -3,7 +3,7 @@ import * as orderType from '../services/order_type'
 import { z } from "zod";
 
 export const getAll : RequestHandler = async (req, res) => {
-    const items = orderType.getAll()
+    const items = await orderType.getAll()
     if(!items) return res.json({ error : 'Erro ao retornar os Tipos de Ordem' })
 
     res.json({ orderTypes : items })
