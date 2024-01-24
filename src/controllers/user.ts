@@ -47,7 +47,7 @@ export const updateUser : RequestHandler = async (req, res) => {
     })
 
     const body = updateSchema.safeParse(req.body)
-    if(!body.success) return res.json({ error : 'Dados inálidos' })
+    if(!body.success) return res.json({ error : 'Dados inválidos' })
 
     const updatedData = await user.update(parseInt(id), body.data)
     if(updatedData) return res.json({ user : updatedData })

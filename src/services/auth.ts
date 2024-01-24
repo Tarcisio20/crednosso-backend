@@ -63,7 +63,7 @@ export const setToken = async (idUser: number, tokenUser: string) => {
 export const loginUser = async (email: string, password: string) => {
   try {
     const user = await prisma.user.findFirst({ where: { email: email } });
-
+    console.log(user)
     if (!user?.id) return false;
     if (!(await comparePassword(password, user.password))) return false;
 
