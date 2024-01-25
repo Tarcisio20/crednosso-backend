@@ -55,6 +55,7 @@ model Treasury {
   id Int @id @default(autoincrement())
   id_system Int
   name_full String
+  number_count Int @default(0)
   shortened_name String
   balance_cass_10 Float
   balance_cass_20 Float

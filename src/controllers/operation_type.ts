@@ -27,7 +27,7 @@ export const getOperartionType : RequestHandler = async (req, res) => {
     const operationTypeOne = await operationType.getOne(parseInt(id))
     if(!operationTypeOne) return res.json({ error : 'Erro ao retornar o Tipo de Operação' })
 
-    res.json({ operationType : operationTypeOne })
+    res.json({ success : '', operationType : operationTypeOne })
 }
 
 export const updateOperartionType : RequestHandler = async (req, res) => {
