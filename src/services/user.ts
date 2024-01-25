@@ -1,5 +1,5 @@
 import { Prisma, PrismaClient } from 'prisma/prisma-client'
-import { hashPassword } from './auth'
+import { createToken, hashPassword } from './auth'
 
 const prisma = new PrismaClient()
 
@@ -12,14 +12,15 @@ export const getAll = async () => {
 export const createUser = async (name : string, email : string, type : string) => {
     try{
         // CRIAR SENHA PADRAO
-        const password = await hashPassword(process.env.PASSWORD_DEFAULT as string) 
+        const password = await hashPassword(process.env.PASSWORD_DEFAULT as string)
+        const createTokenUser = await createToken(email)
         const items = {
             name_full : name,
             email : email,
             user_type : type,
             password : password,
             last_access_date : new Date(),
-            token : ''
+            token : createTokenUser
         }
         const userRegister = await prisma.user.create({
             data : items
