@@ -5,7 +5,7 @@ import { string, z } from "zod";
 
 export const getAll : RequestHandler = async (req, res) => {
     const items = await treasury.getAll()
-    if(items) return res.json({ atms : items })
+    if(items) return res.json({ treasuries : items })
 
     res.json({ error : 'Erro ao retornar Transportados' })
 }
