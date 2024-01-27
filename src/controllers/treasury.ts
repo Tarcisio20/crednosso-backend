@@ -15,6 +15,7 @@ export const create : RequestHandler = async (req, res) => {
         id_system : z.string().transform(Number),
         name_full : z.string(),
         shortened_name : z.string(),
+        number_count : z.string().transform(Number),
         balance_cass_10 : z.string().transform(parseFloat),
         balance_cass_20 : z.string().transform(parseFloat),
         balance_cass_50 : z.string().transform(parseFloat),
