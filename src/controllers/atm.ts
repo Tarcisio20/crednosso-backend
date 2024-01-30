@@ -36,9 +36,8 @@ export const create : RequestHandler = async (req, res) => {
 export const getAtm : RequestHandler = async (req, res) => {
     const { id } = req.params
 
-    const atmRequeried = atm.getOne(parseInt(id))
+    const atmRequeried = await atm.getOne(parseInt(id))
     if(!atmRequeried) return res.json({ error : 'Erro ao buscar ATM.' })
-
     res.json({ atm : atmRequeried })
 }
 

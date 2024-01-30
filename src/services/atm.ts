@@ -21,8 +21,7 @@ export const createAtm = async ( data : AtmCreateData ) => {
 
 export const getOne = async (id : number) => {
     try {
-        const atm = await prisma.atm.findUnique({ where : {  id  } })
-        return atm;
+        return await prisma.atm.findUnique({ where : { id } })
     } catch(err) { return false }
 }
 
