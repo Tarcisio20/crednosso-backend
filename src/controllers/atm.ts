@@ -53,6 +53,7 @@ export const updateAtm : RequestHandler = async (req, res) => {
         config_cass_B : z.string().optional().transform(Number),
         config_cass_C : z.string().optional().transform(Number),
         config_cass_D : z.string().optional().transform(Number),
+        status : z.string().optional().transform(Boolean)
     })
 
     const body = AtmShema.safeParse(req.body)
