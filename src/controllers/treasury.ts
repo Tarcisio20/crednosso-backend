@@ -24,9 +24,10 @@ export const create : RequestHandler = async (req, res) => {
 
     const body = treasurySchema.safeParse(req.body)
     if(!body.success) return res.json({ error : 'Dados inválidos' })
-    if(!treasury.createTreasury( body.data ))  return res.json({ error : 'Erro ao salvar Tesouraria' })
+    const updatedTreasury = await treasury.createTreasury( body.data )
+    if(!updatedTreasury)  return res.json({ error : 'Erro ao salvar Tesouraria' })
     
-    res.json({ success : 'Tesouraria Cadastrada' })
+    res.json({ success : 'Tesouraria Cadastrada', treasury :  updatedTreasury })
 }
 
 export const getTreasury : RequestHandler = async (req, res) => {

@@ -60,9 +60,11 @@ export const updateAtm : RequestHandler = async (req, res) => {
     if(!body.success) return res.json({ error : 'Dados invalidos' })
 
     const updatedAtm = await atm.update(parseInt(id), body.data )
-    if(updatedAtm) return res.json({ success : 'Atm Editado com sucesso', atm : updateAtm }) 
-
-    res.json({ error : 'Erro ao salvar Atm' })
+    if(updatedAtm) return  res.json({ error : 'Erro ao salvar Atm' })
+    
+    return res.json({ success : 'Atm Editado com sucesso', atm : updatedAtm }) 
+    
+    
 }
 
 export const deleteAtm : RequestHandler = async (req, res) => {
