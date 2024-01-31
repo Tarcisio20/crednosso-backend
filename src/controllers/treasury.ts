@@ -20,6 +20,7 @@ export const create : RequestHandler = async (req, res) => {
         balance_cass_20 : z.string().transform(parseFloat),
         balance_cass_50 : z.string().transform(parseFloat),
         balance_cass_100 : z.string().transform(parseFloat),
+        status : z.string().transform(Boolean)
     })
 
     const body = treasurySchema.safeParse(req.body)
