@@ -23,6 +23,8 @@ export const getOne = async (id : number) => {
 
 type UpdateTreasuryData = Prisma.Args<typeof prisma.treasury, 'update'>['data']
 export const update = async (id : number, data : UpdateTreasuryData) => {
+    console.log("Dentro do Server")
+    console.log(data)
     try{
         return await prisma.treasury.update({ where : { id }, data })
     } catch(err){ return false }
