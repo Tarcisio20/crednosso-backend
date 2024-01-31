@@ -31,8 +31,6 @@ model Log {
   user User? @relation(fields: [id_responsable_user], references: [id])
 }
 
-
-
 model Atm {
   id Int @id @default(autoincrement())
   id_system Int
