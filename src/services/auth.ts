@@ -1,4 +1,4 @@
-import { PrismaClient } from "prisma/prisma-client";
+import { PrismaClient } from "@prisma/client";
 const bcrypt = require("bcrypt");
 
 const saltRounds = 10; //process.env.SALT_ROUNDS

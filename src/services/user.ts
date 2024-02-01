@@ -1,4 +1,4 @@
-import { Prisma, PrismaClient } from 'prisma/prisma-client'
+import { Prisma, PrismaClient } from '@prisma/client'
 import { createToken, hashPassword } from './auth'
 
 const prisma = new PrismaClient()
