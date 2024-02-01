@@ -29,7 +29,7 @@ export const create : RequestHandler = async (req, res) => {
     console.log(updatedTreasury)
     if(updatedTreasury)  return  res.json({ success : 'Tesouraria Cadastrada', treasury :  updatedTreasury })
     
-    res.json({ error : 'Erro ao salvar Tesouraria' })
+    res.json({ error : 'Erro ao salvar Tesouraria', mysql : updatedTreasury })
     
     
 }
