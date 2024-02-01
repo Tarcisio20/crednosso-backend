@@ -41,10 +41,10 @@ model Atm {
   config_cass_B Int
   config_cass_C Int
   config_cass_D Int
-  balance_cass_A Float
-  balance_cass_B Float
-  balance_cass_C Float
-  balance_cass_D Float
+  balance_cass_A Int
+  balance_cass_B Int
+  balance_cass_C Int
+  balance_cass_D Int
   status Boolean @default(true)
   treasury Treasury? @relation(fields: [id_treasury], references: [id])
 }
@@ -55,10 +55,10 @@ model Treasury {
   name_full String
   shortened_name String
   number_count Int @default(0)
-  balance_cass_10 Float
-  balance_cass_20 Float
-  balance_cass_50 Float
-  balance_cass_100 Float
+  balance_cass_10 Int
+  balance_cass_20 Int
+  balance_cass_50 Int
+  balance_cass_100 Int
   status Boolean @default(true)
   Atm Atm[]
   TreasuryOrigin Order[] @relation("TreasuryOrigin")
@@ -87,10 +87,10 @@ model Order {
   id_operation_type Int
   id_order_type Int
   batch_treasury Int
-  value_of_10 Float @default(0)
-  value_of_20 Float @default(0)
-  value_of_50 Float @default(0)
-  value_of_100 Float @default(0)
+  value_of_10 Int @default(0)
+  value_of_20 Int @default(0)
+  value_of_50 Int @default(0)
+  value_of_100 Int @default(0)
   observation String
   status Boolean @default(true)
   orderType OrderType? @relation(fields: [id_order_type], references: [id])
