@@ -1,5 +1,5 @@
 -- AlterTable
-ALTER TABLE `Atm` MODIFY `balance_cass_A` INTEGER NOT NULL,
+ALTER TABLE `atm` MODIFY `balance_cass_A` INTEGER NOT NULL,
     MODIFY `balance_cass_B` INTEGER NOT NULL,
     MODIFY `balance_cass_C` INTEGER NOT NULL,
     MODIFY `balance_cass_D` INTEGER NOT NULL;
