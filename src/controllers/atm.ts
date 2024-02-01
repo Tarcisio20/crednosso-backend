@@ -53,14 +53,14 @@ export const updateAtm : RequestHandler = async (req, res) => {
         config_cass_B : z.string().optional().transform(Number),
         config_cass_C : z.string().optional().transform(Number),
         config_cass_D : z.string().optional().transform(Number),
-        status : z.string().optional().transform(Boolean)
+        status : z.boolean().optional()
     })
 
     const body = AtmShema.safeParse(req.body)
     if(!body.success) return res.json({ error : 'Dados invalidos' })
 
     const updatedAtm = await atm.update(parseInt(id), body.data )
-    if(updatedAtm) return  res.json({ error : 'Erro ao salvar Atm' })
+    if(!updatedAtm) return  res.json({ error : 'Erro ao salvar Atm' })
     
     return res.json({ success : 'Atm Editado com sucesso', atm : updatedAtm }) 
     
