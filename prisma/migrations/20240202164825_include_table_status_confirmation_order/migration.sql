@@ -47,3 +47,6 @@ CREATE TABLE `StatusConfirmationOrder` (
 
 -- AddForeignKey
 ALTER TABLE `Order` ADD CONSTRAINT `Order_id_status_confirmation_order_fkey` FOREIGN KEY (`id_status_confirmation_order`) REFERENCES `StatusConfirmationOrder`(`id`) ON DELETE RESTRICT ON UPDATE CASCADE;
+
+
+
