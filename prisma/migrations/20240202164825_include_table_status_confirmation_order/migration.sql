@@ -1,18 +1,3 @@
-/*
-  Warnings:
-
-  - You are about to drop the column `value_of_10` on the `order` table. All the data in the column will be lost.
-  - You are about to drop the column `value_of_100` on the `order` table. All the data in the column will be lost.
-  - You are about to drop the column `value_of_20` on the `order` table. All the data in the column will be lost.
-  - You are about to drop the column `value_of_50` on the `order` table. All the data in the column will be lost.
-  - Added the required column `id_status_confirmation_order` to the `Order` table without a default value. This is not possible if the table is not empty.
-
-*/
--- AlterTable
-ALTER TABLE `Atm` MODIFY `balance_cass_A` INTEGER NOT NULL,
-    MODIFY `balance_cass_B` INTEGER NOT NULL,
-    MODIFY `balance_cass_C` INTEGER NOT NULL,
-    MODIFY `balance_cass_D` INTEGER NOT NULL;
 
 -- AlterTable
 ALTER TABLE `Order` DROP COLUMN `value_of_10`,
@@ -28,13 +13,6 @@ ALTER TABLE `Order` DROP COLUMN `value_of_10`,
     ADD COLUMN `value_requested_100` INTEGER NOT NULL DEFAULT 0,
     ADD COLUMN `value_requested_20` INTEGER NOT NULL DEFAULT 0,
     ADD COLUMN `value_requested_50` INTEGER NOT NULL DEFAULT 0;
-
--- AlterTable
-ALTER TABLE `Treasury` ADD COLUMN `number_count` INTEGER NOT NULL DEFAULT 0,
-    MODIFY `balance_cass_10` INTEGER NOT NULL,
-    MODIFY `balance_cass_20` INTEGER NOT NULL,
-    MODIFY `balance_cass_50` INTEGER NOT NULL,
-    MODIFY `balance_cass_100` INTEGER NOT NULL;
 
 -- CreateTable
 CREATE TABLE `StatusConfirmationOrder` (
