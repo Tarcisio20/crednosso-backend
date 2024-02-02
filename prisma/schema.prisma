@@ -87,15 +87,23 @@ model Order {
   id_operation_type Int
   id_order_type Int
   batch_treasury Int
-  value_of_10 Int @default(0)
-  value_of_20 Int @default(0)
-  value_of_50 Int @default(0)
-  value_of_100 Int @default(0)
+  value_requested_10 Int @default(0)
+  value_requested_20 Int @default(0)
+  value_requested_50 Int @default(0)
+  value_requested_100 Int @default(0)
+  value_confirmed_10 Int @default(0)
+  value_confirmed_20 Int @default(0)
+  value_confirmed_50 Int @default(0)
+  value_confirmed_100 Int @default(0)
   observation String
+  id_status_confirmation_order Int
+  confirmed Boolean @default(false)
   status Boolean @default(true)
   orderType OrderType? @relation(fields: [id_order_type], references: [id])
   treasuryOrigin Treasury? @relation("TreasuryOrigin",fields: [id_origin_treasury], references: [id])
   treasuryDestiny Treasury? @relation("TreasuryDestiny", fields: [id_destiny_treasury], references: [id])
+  statusConfirmaitonOrder StatusConfirmationOrder? @relation(fields: [id_status_confirmation_order], references: [id])
+  
 }
 
 model Supply {
@@ -107,4 +115,11 @@ model Supply {
   value_of_50 Int @default(0)
   value_of_100 Int @default(0)
   status Boolean @default(true)
+}
+
+model StatusConfirmationOrder {
+  id Int @id @default(autoincrement())
+  name_full  String
+  status Boolean @default(true)
+  Order Order[]
 }

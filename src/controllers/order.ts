@@ -1,8 +1,7 @@
 import { RequestHandler } from "express";
+import {  z } from "zod";
 import * as order from '../services/order'
-import { date, z } from "zod";
 import { TransformData } from "../utils/TransformData";
-import { parse, isValid } from 'date-fns';
 
 export const getAll : RequestHandler = async (req, res) => {
     const items = await order.getAll()
@@ -20,10 +19,11 @@ export const create : RequestHandler = async (req, res) => {
         id_operation_type : z.string().transform(Number),
         id_order_type : z.string().transform(Number),
         batch_treasury : z.string().transform(Number),
-        value_of_10 : z.string().transform(Number),
-        value_of_20 : z.string().transform(Number),
-        value_of_50 : z.string().transform(Number),
-        value_of_100 : z.string().transform(Number),
+        value_requested_10 : z.string().transform(Number),
+        value_requested_20 : z.string().transform(Number),
+        value_requested_50 : z.string().transform(Number),
+        value_requested_100 : z.string().transform(Number),
+        id_confirmation : z.string().transform(Number),
         observation : z.string()
     })
 
@@ -37,10 +37,11 @@ export const create : RequestHandler = async (req, res) => {
         id_operation_type : body.data.id_operation_type,
         id_order_type : body.data.id_order_type,
         batch_treasury : body.data.batch_treasury,
-        value_of_10 : body.data.value_of_10,
-        value_of_20 : body.data.value_of_20,
-        value_of_50 : body.data.value_of_50,
-        value_of_100 : body.data.value_of_100,
+        value_requested_10 : body.data.value_requested_10,
+        value_requested_20 : body.data.value_requested_20,
+        value_requested_50 : body.data.value_requested_50,
+        value_requested_100 : body.data.value_requested_100,
+        id_status_confirmation_order: body.data.id_confirmation,
         observation : body.data.observation 
     }
      body.data.order_date = TransformData(body.data.order_date)    
