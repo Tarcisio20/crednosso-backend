@@ -79,4 +79,10 @@ export const searchUser : RequestHandler = async (req, res) => {
     res.json({ error : 'Houve um erro' })
 }
 
+export const resetUser : RequestHandler = async (req, res) => {
+    const { id } = req.params
+
+    const resetedUser = await user.reset(parseInt(id))
+}
+
     

@@ -56,3 +56,11 @@ export const getSearch = async (partial : string) => {
         })    
     }catch(err){ return false}
 }
+
+export const reset = async (id : number) => {
+    const newPassword = await hashPassword(process.env.PASSWORD_DEFAULT as string)
+    const data = { password : newPassword }
+    try{
+        return await prisma.user.update({ where : { id }, data })
+    }catch(err) { return false }
+}

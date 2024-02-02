@@ -19,6 +19,7 @@ router.get("/user/:id",auth.validate, user.getUser);
 router.put("/user/:id",auth.validate, user.updateUser);
 router.delete("/user/:id",auth.validate, user.deleteUser);
 router.post("/user/search",auth.validate, user.searchUser);
+router.post("/user/reset/:id",auth.validate, user.resetUser);
 
 router.get("/log", auth.validate, log.getAll)
 router.get("/log/user/:id", auth.validate, log.getForUser)
