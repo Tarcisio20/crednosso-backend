@@ -15,7 +15,7 @@ ALTER TABLE `Atm` MODIFY `balance_cass_A` INTEGER NOT NULL,
     MODIFY `balance_cass_D` INTEGER NOT NULL;
 
 -- AlterTable
-ALTER TABLE `order` DROP COLUMN `value_of_10`,
+ALTER TABLE `Order` DROP COLUMN `value_of_10`,
     DROP COLUMN `value_of_100`,
     DROP COLUMN `value_of_20`,
     DROP COLUMN `value_of_50`,
