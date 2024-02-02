@@ -30,7 +30,7 @@ ALTER TABLE `Order` DROP COLUMN `value_of_10`,
     ADD COLUMN `value_requested_50` INTEGER NOT NULL DEFAULT 0;
 
 -- AlterTable
-ALTER TABLE `treasury` ADD COLUMN `number_count` INTEGER NOT NULL DEFAULT 0,
+ALTER TABLE `Treasury` ADD COLUMN `number_count` INTEGER NOT NULL DEFAULT 0,
     MODIFY `balance_cass_10` INTEGER NOT NULL,
     MODIFY `balance_cass_20` INTEGER NOT NULL,
     MODIFY `balance_cass_50` INTEGER NOT NULL,
