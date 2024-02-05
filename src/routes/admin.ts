@@ -8,6 +8,7 @@ import * as operationType from '../controllers/operation_type'
 import * as orderType from '../controllers/order_type'
 import * as order from '../controllers/order'
 import * as supply from '../controllers/supply'
+import * as confirmationType from '../controllers/confirmation_type'
 
 const router = Router();
 
@@ -66,5 +67,11 @@ router.put("/supply/:id", auth.validate, supply.updateSupply)
 router.delete("/supply/:id", auth.validate, supply.deleteSupply)
 router.post("/supply/search/:id", auth.validate, supply.searchSupply)
 router.post("/supply/search/atm/:id", auth.validate, supply.searchForIdAtmSupply)
+
+router.get("/confirmation_type", auth.validate, confirmationType.getAll)
+router.post("/confirmation_type", auth.validate, confirmationType.create)
+router.get("/confirmation_type/:id", auth.validate, confirmationType.getConfirmationType)
+router.put("/confirmation_type/:id", auth.validate, confirmationType.updateConfirmationType)
+router.delete("/confirmation_type/:id", auth.validate, confirmationType.deleteConfirmationType)
 
 export default router;

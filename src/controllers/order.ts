@@ -11,7 +11,6 @@ export const getAll : RequestHandler = async (req, res) => {
 }
 
 export const create : RequestHandler = async (req, res) => {
-    console.log("Dentro do create")
     const orderSchema = z.object({
         order_date : z.string(),
         batch : z.string().transform(Number),
@@ -29,8 +28,6 @@ export const create : RequestHandler = async (req, res) => {
     })
 
     const body = orderSchema.safeParse(req.body)
-    console.log("DENTRO DO BACKEND")
-    console.log(req.body)
     if(!body.success) return res.json({ error : 'Dados inválidos.' })
     const data = {
         order_date :  TransformData(body.data.order_date) ,
