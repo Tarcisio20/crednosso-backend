@@ -71,7 +71,7 @@ export const updateOrder : RequestHandler = async (req, res) => {
         id_destiny_treasury : z.string().transform(Number).optional(),
         id_operation_type : z.string().transform(Number).optional(),
         id_order_type : z.string().transform(Number).optional(),
-        id_status_confirmation_order : z.string().optional(),
+        id_status_confirmation_order : z.string().transform(Number).optional(),
         batch : z.string().transform(Number).optional(),
         batch_treasury : z.string().transform(Number).optional(),
         confirmed : z.boolean().optional(),
