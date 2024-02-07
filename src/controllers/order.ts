@@ -2,6 +2,7 @@ import { RequestHandler } from "express";
 import {  z } from "zod";
 import * as order from '../services/order'
 import { TransformData } from "../utils/TransformData";
+import { transcode } from "buffer";
 
 export const getAll : RequestHandler = async (req, res) => {
     const items = await order.getAll()
@@ -29,6 +30,8 @@ export const create : RequestHandler = async (req, res) => {
 
     const body = orderSchema.safeParse(req.body)
     if(!body.success) return res.json({ error : 'Dados inválidos.' })
+
+    body.data.order_date = TransformData(body.data.order_date)
     const data = {
         order_date :  TransformData(body.data.order_date) ,
         batch : body.data.batch,
@@ -63,17 +66,31 @@ export const getOrder : RequestHandler = async (req, res) => {
 export const updateOrder : RequestHandler = async (req, res) => {
     const { id } = req.params
 
-    const orderSchema = z.object({
-        value_of_10 : z.string().transform(Number).optional(),
-        value_of_20 : z.string().transform(Number).optional(),
-        value_of_50 : z.string().transform(Number).optional(),
-        value_of_100 : z.string().transform(Number).optional(),
-        observation : z.string().optional()
+    const orderSchema = z.object({        
+        id_origin_treasury : z.string().transform(Number).optional(),
+        id_destiny_treasury : z.string().transform(Number).optional(),
+        id_operation_type : z.string().transform(Number).optional(),
+        id_order_type : z.string().transform(Number).optional(),
+        id_status_confirmation_order : z.string().optional(),
+        batch : z.string().transform(Number).optional(),
+        batch_treasury : z.string().transform(Number).optional(),
+        confirmed : z.boolean().optional(),
+        observation : z.string().optional(),
+        order_date : z.string(), 
+        status : z.boolean().optional(),
+        value_confirmed_10 : z.string().transform(Number).optional(),
+        value_confirmed_20 : z.string().transform(Number).optional(),
+        value_confirmed_50 : z.string().transform(Number).optional(),
+        value_confirmed_100 : z.string().transform(Number).optional(),
+        value_requested_10 : z.string().transform(Number).optional(),
+        value_requested_20 : z.string().transform(Number).optional(),
+        value_requested_50 : z.string().transform(Number).optional(),
+        value_requested_100 : z.string().transform(Number).optional(),
     })
 
     const body = orderSchema.safeParse(req.body)
     if(!body.success) return res.json({ error : "Dados inválidos" })
-
+    body.data.order_date = TransformData(body.data.order_date)
     const updatedOrder = await order.update( parseInt(id), body.data )
     if(!updatedOrder) return res.json({ error : 'Erro ao editar Pedido' })
 
