@@ -51,8 +51,13 @@ export const updateConfirmationType : RequestHandler = async (req, res) => {
 
 export const deleteConfirmationType : RequestHandler = async (req, res) => {
     const { id } = req.params
-
-    const deletedConfirmationType = await confirmationType.remove(parseInt(id))
+    const DeleteConfirmationTypeSchema = z.object({
+        id_status_confirmation_order : z.string().transform(Number),
+        status : z.boolean()
+    })
+    const body = DeleteConfirmationTypeSchema.safeParse(req.body)
+    if(!body.success) return res.json({ error : 'Dados inválidos.' })
+    const deletedConfirmationType = await confirmationType.remove(parseInt(id), body.data)
     if(!deletedConfirmationType) return res.json({ error : 'Erro ao deletar o tipo de confirmação' })
 
     res.json({ success :  'Tipo de confirmação deletado com sucesso', confirmationType : deletedConfirmationType })

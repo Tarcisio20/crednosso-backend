@@ -28,8 +28,8 @@ export const update = async (id: number, data : ConfirmationUpdateTypeData) => {
     } catch(err){ return false }
 }
 
-export const remove = async (id : number) => {
-    const data = { status : false }
+type ConfirmationRmoveTypeData = Prisma.Args<typeof prisma.statusConfirmationOrder, 'update'>['data']
+export const remove = async (id : number, data : ConfirmationRmoveTypeData) => {
     try {
         return await prisma.statusConfirmationOrder.update({ where : { id }, data })
     } catch(err){ return false }
