@@ -76,7 +76,7 @@ export const updateOrder : RequestHandler = async (req, res) => {
         batch_treasury : z.string().transform(Number).optional(),
         confirmed : z.boolean().optional(),
         observation : z.string().optional(),
-        order_date : z.string(), 
+        order_date : z.string().optional(), 
         status : z.boolean().optional(),
         value_confirmed_10 : z.string().transform(Number).optional(),
         value_confirmed_20 : z.string().transform(Number).optional(),
@@ -90,7 +90,9 @@ export const updateOrder : RequestHandler = async (req, res) => {
 
     const body = orderSchema.safeParse(req.body)
     if(!body.success) return res.json({ error : "Dados inválidos" })
-    body.data.order_date = TransformData(body.data.order_date)
+    if(body.data.hasOwnProperty('order_date')){
+        body.data.order_date =  TransformData(body.data.order_date as string)
+    }
     const updatedOrder = await order.update( parseInt(id), body.data )
     if(!updatedOrder) return res.json({ error : 'Erro ao editar Pedido' })
 
