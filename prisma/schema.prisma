@@ -61,8 +61,18 @@ model Treasury {
   balance_cass_100 Int
   status Boolean @default(true)
   Atm Atm[]
+  EmailsTreasury EmailsTreasury[]
   TreasuryOrigin Order[] @relation("TreasuryOrigin")
   TreasuryDestiny Order[] @relation("TreasuryDestiny")
+}
+
+model EmailsTreasury {
+  id Int @id @default(autoincrement())
+  id_treasury Int
+  email String
+  status Boolean @default(true)
+  treasury Treasury? @relation(fields: [id_treasury], references: [id])
+
 }
 
 model OperationType {
