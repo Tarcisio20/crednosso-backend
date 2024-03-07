@@ -56,12 +56,11 @@ export const updateTreasury : RequestHandler = async (req, res) => {
         balance_cass_20 : z.string().transform(parseFloat).optional(),
         balance_cass_50 : z.string().transform(parseFloat).optional(),
         balance_cass_100 : z.string().transform(parseFloat).optional(),
-        status : z.boolean().optional()
+        emails : z.string().optional(),
+        status : z.boolean().optional(),
     })
 
     const body = treasurySchema.safeParse(req.body)
-    console.log("Dentro do controller")
-    console.log(body)
     if(!body.success) return res.json({ error : 'Dados inválidos' })
     const updatedTreasury = await treasury.update(parseInt(id), body.data)
     if(!updatedTreasury) return res.json({ error : 'Erro ao editar Tesouraria, tente mais tarde' })
