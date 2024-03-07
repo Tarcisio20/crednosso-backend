@@ -59,7 +59,7 @@ model Treasury {
   balance_cass_20 Int
   balance_cass_50 Int
   balance_cass_100 Int
-  emails String
+  emails String @default("")
   status Boolean @default(true)
   Atm Atm[]
   TreasuryOrigin Order[] @relation("TreasuryOrigin")
