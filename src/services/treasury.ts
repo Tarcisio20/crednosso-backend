@@ -11,7 +11,7 @@ export const getAll = async () => {
 type CreateTreasuryData = Prisma.Args<typeof prisma.treasury, 'create'>['data']
 export const createTreasury = async (data : CreateTreasuryData) => {
     try {
-        const newTreasury = await prisma.treasury.create({ data })
+        return await prisma.treasury.create({ data })
     } catch(err){ return err }
 }
 
